@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UI>
+  <choice caption="Юр. лицо">
+    <element type="LineBox">
+      <checked caption="ОГРН (Нажать для ИНН)" post="&amp;OGRN="/>
+      <unchecked caption="ИНН (Нажать для ОГРН)" post="&amp;INN="/>
+    </element>
+    <element type="DoubleCheckbox">
+      <checkbox caption="ЕГРЮЛ текущий" post="&amp;FNST=1"/>
+      <checkbox caption="ЕГРЮЛ архивный" post="&amp;FNSA=1"/>
+    </element>
+    <element type="SimpleCheckbox" caption="ГИБДД" post="&amp;GIBDD=1"/>
+    <element type="SimpleCheckbox" caption="ЕГРЮЛ + Росстат" post="&amp;Balans=1"/>
+    <element type="SimpleCheckbox" caption="Сервис ВИ" post="&amp;SVI=1"/>
+    <element type="SimpleCheckbox" caption="Аффилир-сть" post="&amp;AFF=1"/>
+    <element type="SimpleCheckbox" caption="Внеш. источники" post="&amp;ExtSource=1"/>
+  </choice>
+  
+  <choice caption="ИП">
+    <element type="LineBox">
+      <checked caption="ОГРН (Нажать для ИНН)" post="&amp;OGRNIP="/>
+      <unchecked caption="ИНН (Нажать для ОГРН)" post="&amp;INNIP="/>
+    </element>
+    <element type="DoubleCheckbox">
+      <checkbox caption="ЕГРИП текущий" post="&amp;IPT=1"/>
+      <checkbox caption="ЕГРИП архивный" post="&amp;IPA=1"/>
+    </element>
+    <element type="SimpleCheckbox" caption="Расш. ИП" post="&amp;ExtendedIP=1"/>
+    <element type="SimpleCheckbox" caption="Внеш. источники" post="&amp;ExtSource=1"/>
+  </choice>
+
+  <choice caption="Физ. лица">
+    <element type="SimpleLine" caption="Фамилия" post="&amp;SurName="/>
+    <element type="SimpleLine" caption="Имя" post="&amp;FirstName="/>
+    <element type="SimpleLine" caption="Отчество" post="&amp;MiddleName="/>
+    <element type="Date" caption="Дата рождения" post="&amp;DateOfBirth="/>
+    <element type="SimpleLine" caption="Серия паспорта" post="&amp;Seria="/>
+    <element type="SimpleLine" caption="Номер паспорта" post="&amp;Number="/>
+    <element type="SimpleLine" caption="ИНН физлица" post="&amp;INNExp="/>
+    <element type="SimpleCheckbox" caption="ГИБДД" post="&amp;GIBDD=1"/>
+    <element type="DoubleCheckbox">
+      <checkbox caption="ЦАСБ обычный" post="&amp;CASBO=1"/>
+      <checkbox caption="ЦАСБ расш." post="&amp;CASBR=1"/>
+    </element>
+    <element type="SimpleCheckbox" caption="Рейтинг БКИ‐1" post="&amp;Raiting=1"/>
+    <element type="SimpleCheckbox" caption="Рейтинг БКИ‐2" post="&amp;Raiting_2=1"/>
+    <element type="SimpleCheckbox" caption="Фактор риска" post="&amp;FR=1"/>
+    <element type="SimpleCheckbox" caption="Аффилир-сть" post="&amp;AFF=1"/>
+    <element type="SimpleCheckbox" caption="Сервис ВИ" post="&amp;SVI=1"/>
+    <element type="SimpleCheckbox" caption="Внеш. источники" post="&amp;ExtSource=1"/>
+  </choice>
+
+  <choice caption="Паспорта">
+    <element type="SimpleLine" caption="Серия паспорта" post="&amp;Seria="/>
+    <element type="SimpleLine" caption="Номер паспорта" post="&amp;Number="/>
+    <element type="SimpleCheckbox" caption="Утраченные" post="&amp;UPassporta=1"/>
+    <element type="SimpleCheckbox" caption="Выданные" post="&amp;PPFMS=1"/>
+  </choice>
+
+  <choice caption="БС-ЮЛ">
+    <element type="SimpleLine" caption="ОГРН юрлица" post="&amp;OGRN="/>
+    <element type="DoubleCheckbox">
+      <checkbox caption="БС‐ЮЛ без ПД" post="&amp;BS=1"/>
+      <checkbox caption="БС‐ЮЛ с ПД" post="&amp;BSPD=1"/>
+    </element>
+  </choice>
+
+  <choice caption="ГИБДД">
+    <element type="SimpleLine" caption="Гос. номер" post="&amp;GosNumber="/>
+    <element type="SimpleLine" caption="VIN" post="&amp;VIN="/>
+    <element type="SimpleCheckbox" caption="ТС Москвы" post="&amp;TS=1"/>
+    <element type="SimpleCheckbox" caption="Обремененные ТС" post="&amp;BCars=1"/>
+    <element type="SimpleCheckbox" caption="Розыск авто" post="&amp;SCars=1"/>
+  </choice>
+
+  <choice caption="БС‐ИП">
+    <element type="Hidden" post="&amp;BIP=1"/>
+    <element type="SimpleLine" caption="Фамилия" post="&amp;SurName="/>
+    <element type="SimpleLine" caption="Имя" post="&amp;FirstName="/>
+    <element type="SimpleLine" caption="Отчество" post="&amp;MiddleName="/>
+    <element type="Date" caption="Дата рождения" post="&amp;DateOfBirth="/>
+    <element type="SimpleLine" caption="Серия паспорта" post="&amp;Seria="/>
+    <element type="SimpleLine" caption="Номер паспорта" post="&amp;Number="/>
+    <element type="SimpleLine" caption="ОГРН" post="&amp;OGRNIP="/>
+
+    <element type="SimpleLine" caption="Регион" post="&amp;RegionExp="/>
+    <element type="SimpleLine" caption="Город" post="&amp;CityExp="/>
+    <element type="SimpleLine" caption="Улица" post="&amp;StreetExp="/>
+    <element type="SimpleLine" caption="Номер дома" post="&amp;HouseExp="/>
+    <element type="SimpleLine" caption="Корпус" post="&amp;BuildExp="/>
+    <element type="SimpleLine" caption="Строение" post="&amp;BuildingExp="/>
+    <element type="SimpleLine" caption="№ квартиры" post="&amp;FlatExp="/>
+    <element type="SimpleLine" caption="Телефон" post="&amp;PhoneExp="/>
+  </choice>
+
+  <choice caption="Идент. ФЛ">
+    <element type="SimpleLine" caption="Фамилия" post="&amp;SurName="/>
+    <element type="SimpleLine" caption="Имя" post="&amp;FirstName="/>
+    <element type="SimpleLine" caption="Отчество" post="&amp;MiddleName="/>
+    <element type="Date" caption="Дата рождения" post="&amp;DateOfBirth="/>
+    <element type="SimpleLine" caption="Серия паспорта" post="&amp;Seria="/>
+    <element type="SimpleLine" caption="Номер паспорта" post="&amp;Number="/>
+    <element type="SimpleLine" caption="ОГРН" post="&amp;OGRNIP="/>
+  </choice>
+ </UI>
