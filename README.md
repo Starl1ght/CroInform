@@ -5,5 +5,5 @@ Win: MSVS 2013 + Qt 5.4 + Qt VS Addin<br>
 Lin: QtCreator + Qt 5.4<br>
 
 <b>History</b><br>
-16/02/15: Published
+16/02/15: Published<br>
 17/02/15: Asio write\read was done, todo - fix locale
