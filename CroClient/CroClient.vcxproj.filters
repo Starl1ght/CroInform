@@ -123,9 +123,6 @@
     <ClInclude Include="ICustomWidget.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="asio.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="ui.xml">

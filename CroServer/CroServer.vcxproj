@@ -11,20 +11,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CClientThread.h" />
     <ClInclude Include="CPlatformApiLayer.h" />
     <ClInclude Include="CServer.h" />
     <ClInclude Include="CSqlLayer.h" />
-    <ClInclude Include="asio.h" />
     <ClInclude Include="CWorker.h" />
-    <ClInclude Include="util.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CPlatformApiLayer.cpp" />
     <ClCompile Include="CServer.cpp" />
     <ClCompile Include="CSqlLayer.cpp" />
     <ClCompile Include="CWorker.cpp" />
-    <ClCompile Include="util.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{5399E0ED-0418-454D-A94A-06C599037D46}</ProjectGuid>
@@ -54,7 +50,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)\asio\;$(QTDIR)\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\shared;$(SolutionDir)\asio\;$(QTDIR)\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>

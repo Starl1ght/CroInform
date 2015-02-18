@@ -1,9 +1,8 @@
 #include "CServer.h"
 #include <iostream>
 
-
-
 void main(int argc, char *argv[]){
+
 	QCoreApplication app(argc, argv);
 	CServer server;
 }
@@ -32,7 +31,7 @@ CServer::CServer(){
 	while (true) {
 		tcp::socket* socket = new tcp::socket(io_service);
 		acceptor.accept(*socket);
-		std::cout << "Accepted connection ^_^" << std::endl;
+		std::cout << "Connected IP: " << socket->remote_endpoint().address().to_string() << std::endl;
 
 		vec.push_back(CWorker());
 		std::thread thr([&] { vec.back().run(std::unique_ptr<tcp::socket>(socket)); });
