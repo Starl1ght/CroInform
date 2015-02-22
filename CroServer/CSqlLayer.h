@@ -1,14 +1,20 @@
 #include <util.h>
 #include <QtSQL>
 
-class CSqlLayer {
+class CSqlLayer : public QObject{
+	Q_OBJECT
 public:
 	CSqlLayer() = default;
 	~CSqlLayer();
 
 	bool connect();
 	void fetchApiCredentials(QString* login, QString* password);
-	authResult CSqlLayer::validateUserCredentials(const QString & login, const QString & password);
+
+public slots:
+	void validateUserCredentials(QString, QString);
+
+signals:
+	void authSignal(authResult);
 private:
 	QSqlDatabase db;
 };

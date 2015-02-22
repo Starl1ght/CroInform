@@ -9,7 +9,7 @@ void main(int argc, char** argv){
 
 	// auth routine
 	QObject::connect(&dlg, &CAuthDialog::authSignal, &api, &CAPIManager::authSlot);
-	QObject::connect(&api, &CAPIManager::authResult, &dlg, &CAuthDialog::authResult);
+	QObject::connect(&api, &CAPIManager::authResultSignal, &dlg, &CAuthDialog::authResultSlot);
 	// if auth is successful -> show window
 	QObject::connect(&dlg, &CAuthDialog::authSuccessful, &window, &CMainWindow::showWindow);
 	// send request to API

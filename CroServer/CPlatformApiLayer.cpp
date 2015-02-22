@@ -1,6 +1,6 @@
 #include "CPlatformApiLayer.h"
-#ifdef _WIN32
 
+#ifdef _WIN32
 CPlatformApiLayer::CPlatformApiLayer(){
 	CoInitialize(NULL);
 	m_xmlRequest.CreateInstance("Msxml2.XMLHTTP.6.0");

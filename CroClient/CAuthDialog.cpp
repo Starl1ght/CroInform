@@ -38,9 +38,9 @@ void CAuthDialog::closeEvent(QCloseEvent * e){
 	QApplication::exit();
 }
 
-void CAuthDialog::authResult(bool result){
-	if (result) {
-		emit authSuccessful();
+void CAuthDialog::authResultSlot(authResult res) {
+	if (res != authResult::fail) {
+		emit authSuccessful(); // TODO - admin & user :)
 		this->destroy();
 	} else {
 		m_loginButton->setText(QString::fromLocal8Bit("Неверно!"));

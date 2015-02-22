@@ -6,4 +6,5 @@ Lin: QtCreator + Qt 5.4<br>
 
 <b>History</b><br>
 16/02/15: Published<br>
-17/02/15: Asio write\read was done, todo - fix locale
+17/02/15: Asio write\read was done, todo - fix locale<br>
+22/02/15: Authentication works, locale fixed, rewrote server to Qt objects<br>

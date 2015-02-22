@@ -15,27 +15,47 @@ CServer::CServer(){
 	
 	QString log, pass;
 	m_sql.fetchApiCredentials(&log, &pass);
+
+#ifdef _DEBUG // well, I do not want to be this in thread.
+	std::thread thr([&] {
+		if (!m_api.auth(log, pass)) {
+		exit(-3);
+		
+	}});
+	thr.detach();
+#else 
 	if (!m_api.auth(log, pass)) {
+		std::cout << "API cannot auth\connect" << std::endl;
 		exit(-3);
 	}
+#endif
+	
+
+	
+
+
+
 	std::cout << "CroAPI connect OK" << std::endl;
 
-
-	std::vector<std::thread*> beba;
 	asio::io_service io_service;
 	tcp::acceptor acceptor(io_service, tcp::endpoint(tcp::v4(), 3228));
 	std::cout << "Accepting connections..." << std::endl;
 
 	std::vector<CWorker> vec;
-	
+	vec.push_back(CWorker());
+	QObject::connect(&vec.back(), &CWorker::checkUserLogin, &m_sql, &CSqlLayer::validateUserCredentials, Qt::DirectConnection);
+	QObject::connect(&m_sql, &CSqlLayer::authSignal, &vec.back(), &CWorker::infoUserLogin, Qt::DirectConnection);
 	while (true) {
 		tcp::socket* socket = new tcp::socket(io_service);
 		acceptor.accept(*socket);
 		std::cout << "Connected IP: " << socket->remote_endpoint().address().to_string() << std::endl;
 
-		vec.push_back(CWorker());
-		std::thread thr([&] { vec.back().run(std::unique_ptr<tcp::socket>(socket)); });
-		thr.detach();
+		
+		std::thread thrs([&] { 
+			vec.back().run(socket);
+			std::cout << "Disconnected: " << socket->remote_endpoint().address().to_string() << std::endl;
+		});
+		thrs.detach();
 	}
 }
 

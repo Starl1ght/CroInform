@@ -9,11 +9,11 @@ using packet_header = std::array<char, 4>;
 
 namespace util{
 	inline QByteArray toRu(const QString & str){
-		QTextCodec *codec = QTextCodec::codecForName("Windows-1251");
+		QTextCodec *codec = QTextCodec::codecForName("cp1251");
 		return codec->fromUnicode(str);
 	}
 	inline QString toQstr(const QByteArray& arr){
-		QTextCodec *codec = QTextCodec::codecForName("Windows-1251");
+		QTextCodec *codec = QTextCodec::codecForName("cp1251");
 		return codec->toUnicode(arr);
 	}
 	inline QString toQstr(char* str){
@@ -36,7 +36,7 @@ namespace util{
 		rez[3] = static_cast<char>(size & 0x000000FF);
 		return rez;
 	}
-	inline asio::error_code asio_read(const socket_ptr & socket, QByteArray* toRead){
+	inline asio::error_code asio_read(const socket_ptr & socket, QByteArray & toRead){
 		asio::error_code err;
 		packet_header header;
 		asio::read(*socket, asio::buffer(header), err);
@@ -49,8 +49,8 @@ namespace util{
 		// I cannot do this without new char*. Spent ~2 hours, futile... :(
 		char* buf = new char[packSize];
 		asio::read(*socket, asio::buffer(buf, packSize), err);
-		toRead->clear();
-		toRead->append(buf, packSize);
+		toRead.clear();
+		toRead.append(buf, packSize);
 		delete[] buf;
 		return err;
 	}

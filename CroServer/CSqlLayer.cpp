@@ -12,7 +12,6 @@ bool CSqlLayer::connect(){
 	db.setUserName("croserver");
 	db.setPassword("1qazXSW@3edc");
 	return db.open();
-	
 }
 
 void CSqlLayer::fetchApiCredentials(QString* login, QString* password){
@@ -27,7 +26,7 @@ void CSqlLayer::fetchApiCredentials(QString* login, QString* password){
 	*password = query.value(0).toString();
 }
 
-authResult CSqlLayer::validateUserCredentials(const QString & login, const QString & password){
+void CSqlLayer::validateUserCredentials(QString login, QString password){
 	QSqlQuery query;
 
 	QString str{ "SELECT `permission` FROM `accounts` WHERE `login` = \"" };
@@ -40,18 +39,13 @@ authResult CSqlLayer::validateUserCredentials(const QString & login, const QStri
 	query.next();
 
 	if (query.isNull(0)) {
-		return authResult::fail;
+		emit authSignal(authResult::fail);
+		return;
 	}
 
-	switch (query.value(0).toInt()) {
-	case 0:
-		return authResult::admin;
-		break;
-	case 1:
-		return authResult::user;
-		break;
-	default:
-		std::cout << "Boys, we have DB inconsistency here";
-		exit(-14);
+	if (query.value(0).toInt() == 0) {
+		emit authSignal(authResult::admin);
+	} else {
+		emit authSignal(authResult::user);
 	}
 }

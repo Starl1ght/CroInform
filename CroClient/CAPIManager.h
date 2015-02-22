@@ -14,7 +14,7 @@ public slots:
 	void authSlot(QString, QString);
 signals:
 	void gotData(QString);
-	void authResult(bool);
+	void authResultSignal(authResult);
 	void forwardAnswerToParse(QString);
 	void forwardErrorToParse(QString);
 private:

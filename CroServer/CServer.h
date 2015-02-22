@@ -5,7 +5,8 @@
 #include "CSqlLayer.h"
 #include "CWorker.h"
 
-class CServer {
+class CServer : public QObject {
+	Q_OBJECT
 public:
 	CServer();
 	~CServer() = default;

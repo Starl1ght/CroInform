@@ -1,11 +1,10 @@
 #include <util.h>
 
+// qt don't like this one :D
 #ifdef _WIN32
-#define CPlatformApiLayer CPlatformApiLayer_W
 #import <msxml6.dll>
 
-
-class CPlatformApiLayer_W{
+class CPlatformApiLayer {
 public:
 	CPlatformApiLayer();
 	~CPlatformApiLayer();
@@ -14,7 +13,7 @@ public:
 	bool auth(const QString & login, const QString & pass);
 private:
 	QString m_workingDir{ "" };
-	const QString m_url{ "https://ssl.croinform.ru:450/api" };
+	const QString m_url{ "https://ssl.croinform.ru:450/api.test" };
 	MSXML2::IXMLHTTPRequestPtr m_xmlRequest;
 };
 

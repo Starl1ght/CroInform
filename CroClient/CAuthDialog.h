@@ -1,4 +1,5 @@
 #pragma once
+#include "util.h"
 #include <QDialog>
 #include <QtWidgets>
 #include <memory>
@@ -10,7 +11,7 @@ public:
 
 	void closeEvent(QCloseEvent * e);
 public slots:
-	void authResult(bool);
+	void authResultSlot(authResult);
 	void buttonClicked(bool);
 
 signals:
