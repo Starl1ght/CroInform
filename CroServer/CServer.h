@@ -9,12 +9,12 @@ class CServer : public QObject {
 	Q_OBJECT
 public:
 	CServer();
-	~CServer() = default;
+	~CServer();
 	CServer(const CServer&) = delete;
 	CServer& operator=(const CServer&) = delete;
 		
 private:
-	CPlatformApiLayer m_api;
+	CPlatformApiLayer* m_api;
 	CSqlLayer m_sql;
 	QString m_workingDir;
 };

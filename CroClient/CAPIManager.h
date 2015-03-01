@@ -21,5 +21,5 @@ private:
 	void CAPIManager::queryRequest(QString id);
 
 	asio::io_service io;
-	socket_ptr m_socket{ new tcp::socket(io) };
+	socket_ptr m_socket;
 };

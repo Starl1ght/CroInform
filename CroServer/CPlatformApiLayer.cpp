@@ -14,6 +14,7 @@ CPlatformApiLayer::~CPlatformApiLayer(){
 	m_xmlRequest->setRequestHeader("Connection", "close");
 	m_xmlRequest->send(util::toRu(m_url).data());
 }
+
 bool CPlatformApiLayer::auth(const QString & login, const QString & pass){
 	m_xmlRequest->open("POST", util::toRu(m_url).data(), false);
 	QString str{ "Type=Login&Login=" + login + "&Password=" + pass };
@@ -33,5 +34,38 @@ bool CPlatformApiLayer::auth(const QString & login, const QString & pass){
 	m_workingDir = doc.documentElement().firstChildElement("WorkingDirectory").text();
 	return true;
 }
+
+void CPlatformApiLayer::requestApi(const QString & post, QString & out){
+	m_xmlRequest->open("POST", util::toRu(m_url).data(), false);
+	QString str{ "Type=Request&WorkingDirectory=" + m_workingDir + "&" + post };
+	m_xmlRequest->setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	m_xmlRequest->setRequestHeader("Content-length", _bstr_t(str.length()));
+	m_xmlRequest->setRequestHeader("Connection", "close");
+	m_xmlRequest->send(util::toRu(str).data());
+	
+	out = util::toQstr((char*)m_xmlRequest->responseText);
+	std::cout << util::toRu(out).toStdString();
+}
+
+void CPlatformApiLayer::queryApi(const QString & id, QString & out){
+	m_xmlRequest->open("POST", util::toRu(m_url).data(), false);
+	QString str{ "Type=Answer&WorkingDirectory=" + m_workingDir + "&RequestNumber=" + id + "&=TypeAnswer=HV" };
+	m_xmlRequest->setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	m_xmlRequest->setRequestHeader("Content-length", _bstr_t(str.length()));
+	m_xmlRequest->setRequestHeader("Connection", "close");
+	m_xmlRequest->send(util::toRu(str).data());
+
+	out = util::toQstr((char*)m_xmlRequest->responseText);
+	std::cout << util::toRu(out).toStdString();
+}
+
+
+
+
+
+
+
 #endif
+
+
 

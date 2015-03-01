@@ -8,6 +8,7 @@ void main(int argc, char *argv[]){
 }
 
 CServer::CServer(){
+	m_api = new CPlatformApiLayer();
 	if (!m_sql.connect()) {
 		exit(-2);
 	}
@@ -18,13 +19,13 @@ CServer::CServer(){
 
 #ifdef _DEBUG // well, I do not want to be this in thread.
 	std::thread thr([&] {
-		if (!m_api.auth(log, pass)) {
+		if (!m_api->auth(log, pass)) {
 		exit(-3);
 		
 	}});
 	thr.detach();
 #else 
-	if (!m_api.auth(log, pass)) {
+	if (!m_api->auth(log, pass)) {
 		std::cout << "API cannot auth\connect" << std::endl;
 		exit(-3);
 	}
@@ -52,12 +53,13 @@ CServer::CServer(){
 
 		
 		std::thread thrs([&] { 
-			vec.back().run(socket);
+			vec.back().run(socket, m_api);
 			std::cout << "Disconnected: " << socket->remote_endpoint().address().to_string() << std::endl;
 		});
 		thrs.detach();
 	}
 }
 
-
-//CServer::run();
+CServer::~CServer(){
+	delete m_api;
+}

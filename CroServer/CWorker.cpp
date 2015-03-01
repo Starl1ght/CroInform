@@ -1,13 +1,40 @@
 #include "CWorker.h"
-void CWorker::run(tcp::socket* sock){
+
+
+void CWorker::run(tcp::socket* sock, CPlatformApiLayer* api){
 	m_socket = socket_ptr(sock);
-	while (m_socketOk) {
-		QByteArray reply;
+	QByteArray reply;
+	QDomDocument doc;
+
+	if (m_socketOk) { // if first packet is not auth - GTFO
 		readSocket(reply);
-		QDomDocument doc;
-		doc.setContent(util::toQstr(reply));
+		doc.setContent(reply);
 		if (doc.documentElement().tagName() == "auth") {
 			emit checkUserLogin(doc.documentElement().attribute("login"), doc.documentElement().attribute("password"));
+		} else {
+			m_socketOk = false;
+		}
+	}
+
+	QString answer;
+	while (m_socketOk && m_permissions != authResult::fail) {
+		readSocket(reply);
+		doc.setContent(util::toQstr(reply));
+		
+		if (doc.documentElement().tagName() == "post") { 
+			api->requestApi(doc.documentElement().attribute("data"), answer);
+			writeSocket(util::toRu(answer));
+		}
+
+		if (doc.documentElement().tagName() == "query") {
+			api->queryApi(doc.documentElement().attribute("id"), answer);
+			writeSocket(util::toRu(answer));
+		}
+
+		if (m_permissions == authResult::admin) {
+			if (doc.documentElement().tagName() == "user") { 
+				doc.documentElement().attribute("action");
+			}
 		}
 	}
 }
@@ -16,7 +43,10 @@ void CWorker::infoUserLogin(authResult rez){
 	QDomDocument doc;
 	QDomElement elem = doc.createElement("auth");
 	
-	switch (rez) {
+
+	m_permissions = rez;
+
+	switch (m_permissions) {
 	case authResult::admin:
 		elem.setAttribute("result", "admin");
 		break;

@@ -1,20 +1,43 @@
 #include "CAPIManager.h"
 
 CAPIManager::CAPIManager(){
-	Sleep(1000);
-	tcp::endpoint ep{ asio::ip::address_v4::from_string("127.0.0.1"), 3228 };
-	m_socket->connect(ep);
-	
+
 }
 
 
-void CAPIManager::postReceiver(QString){
+void CAPIManager::postReceiver(QString post){
+	asio::error_code ec;
+	
+	QDomDocument doc;
+	QDomElement root = doc.createElement("post");
+	root.setAttribute("data", post);
+	doc.appendChild(root);
 
+	QByteArray arr = util::toRu(doc.toString());
+	ec = util::asio_write(m_socket, arr); // posted POST request;
+	ec = util::asio_read(m_socket, arr); // reply
+
+
+	QString answer = util::toQstr(arr);
+	doc.setContent(answer);
+	
+	root = doc.documentElement().firstChildElement();
+	if (root.tagName() == "Error") {
+		emit forwardErrorToParse(answer);
+		return;
+	}
+
+	if (root.tagName() == "RequestNumber") {
+		queryRequest(root.text());
+	}
 }
 
 void CAPIManager::authSlot(QString login, QString password){
-	QByteArray arr;
+	tcp::endpoint ep{ asio::ip::address_v4::from_string("127.0.0.1"), 3228 };
+	m_socket.reset(new tcp::socket(io));
+	m_socket->connect(ep);
 	
+	QByteArray arr;
 	QDomDocument doc;
 	QDomElement root = doc.createElement("auth");
 	root.setAttribute("login", login);
@@ -24,12 +47,10 @@ void CAPIManager::authSlot(QString login, QString password){
 	arr = util::toRu(doc.toString());
 		
 	asio::error_code ec;
+	
 	ec = util::asio_write(m_socket, arr);
-	if (ec) {
-		return; // lol
-	}
+	ec = util::asio_read(m_socket, arr);
 
-	util::asio_read(m_socket, arr);
 	doc.setContent(arr);
 	if (doc.documentElement().tagName() == "auth") {
 		if (doc.documentElement().attribute("result") == "fail") {
@@ -45,5 +66,11 @@ void CAPIManager::authSlot(QString login, QString password){
 }
 
 void CAPIManager::queryRequest(QString id) {
+	asio::error_code ec;
 
+	QByteArray arr{ "<query id=\"" + util::toRu(id) + "\"/>" };
+	ec = util::asio_write(m_socket, arr);
+	ec = util::asio_read(m_socket, arr);
+
+	emit forwardAnswerToParse(util::toQstr(arr));
 }
