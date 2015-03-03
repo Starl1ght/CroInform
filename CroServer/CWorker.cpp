@@ -2,6 +2,7 @@
 
 
 void CWorker::run(tcp::socket* sock, CPlatformApiLayer* api){
+	asio::error_code ec;
 	m_socket = socket_ptr(sock);
 	QByteArray reply;
 	QDomDocument doc;
@@ -13,6 +14,7 @@ void CWorker::run(tcp::socket* sock, CPlatformApiLayer* api){
 			emit checkUserLogin(doc.documentElement().attribute("login"), doc.documentElement().attribute("password"));
 		} else {
 			m_socketOk = false;
+			m_socket->close(ec);
 		}
 	}
 
@@ -37,6 +39,8 @@ void CWorker::run(tcp::socket* sock, CPlatformApiLayer* api){
 			}
 		}
 	}
+	m_socketOk = false;
+	m_socket->close(ec);
 }
 
 void CWorker::infoUserLogin(authResult rez){
@@ -65,6 +69,7 @@ void CWorker::readSocket(QByteArray & toRead){
 	auto ec = util::asio_read(m_socket, toRead);
 	if (ec) {
 		m_socketOk = false;
+		m_socket->close(ec);
 	}
 
 
@@ -73,5 +78,6 @@ void CWorker::writeSocket(const QByteArray & toWrite){
 	auto ec = util::asio_write(m_socket, toWrite);
 	if (ec) {
 		m_socketOk = false;
+		m_socket->close(ec);
 	}
 }

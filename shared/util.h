@@ -5,7 +5,7 @@
 #include <asio.h>
 
 using socket_ptr = std::unique_ptr<tcp::socket>;
-using packet_header = std::array<char, 4>;
+using packet_header = std::array<unsigned char, 4>;
 
 namespace util{
 	inline QByteArray toRu(const QString & str){
@@ -30,10 +30,10 @@ namespace util{
 	}
 	inline packet_header asio_packet_size(uint32_t size){
 		packet_header rez;
-		rez[0] = static_cast<char>(size & 0xFF000000);
-		rez[1] = static_cast<char>(size & 0x00FF0000);
-		rez[2] = static_cast<char>(size & 0x0000FF00);
-		rez[3] = static_cast<char>(size & 0x000000FF);
+		rez[0] = static_cast<unsigned char>((size & 0xFF000000) >> 24);
+		rez[1] = static_cast<unsigned char>((size & 0x00FF0000) >> 16);
+		rez[2] = static_cast<unsigned char>((size & 0x0000FF00) >> 8);
+		rez[3] = static_cast<unsigned char>(size & 0x000000FF);
 		return rez;
 	}
 	inline asio::error_code asio_read(const socket_ptr & socket, QByteArray & toRead){

@@ -22,7 +22,7 @@ void CAPIManager::postReceiver(QString post){
 	doc.setContent(answer);
 	
 	root = doc.documentElement().firstChildElement();
-	if (root.tagName() == "Error") {
+	if (root.tagName() == "Error" || root.tagName() == "Warning") {
 		emit forwardErrorToParse(answer);
 		return;
 	}
