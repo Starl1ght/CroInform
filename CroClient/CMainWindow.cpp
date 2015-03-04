@@ -37,7 +37,9 @@ void CMainWindow::unblockUI(){
 	m_submitButton->setEnabled(true);
 }
 void CMainWindow::getFormattedData(QString text){
-	m_outputTextEdit->setText(text);
+	m_outputTextEdit->clear();
+	m_outputTextEdit->insertHtml(text);
+	//m_outputTextEdit->setText(text);
 }
 void CMainWindow::showWindow(){
 	this->show();

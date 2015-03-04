@@ -17,24 +17,10 @@ CServer::CServer(){
 	QString log, pass;
 	m_sql.fetchApiCredentials(&log, &pass);
 
-#ifdef _DEBUG // well, I do not want to be this in thread.
-	std::thread thr([&] {
-		if (!m_api->auth(log, pass)) {
-		exit(-3);
-		
-	}});
-	thr.detach();
-#else 
 	if (!m_api->auth(log, pass)) {
 		std::cout << "API cannot auth\connect" << std::endl;
 		exit(-3);
 	}
-#endif
-	
-
-	
-
-
 
 	std::cout << "CroAPI connect OK" << std::endl;
 

@@ -1,6 +1,7 @@
 #pragma once
 #include <QObject>
-
+#include <QtXML>
+#include "util.h"
 class CParser : public QObject{
 	Q_OBJECT
 public:

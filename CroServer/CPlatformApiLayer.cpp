@@ -28,6 +28,7 @@ bool CPlatformApiLayer::auth(const QString & login, const QString & pass){
 		return false;
 	}
 	if (doc.documentElement().firstChildElement("WorkingDirectory").text().length() == 0) {
+		std::cout << doc.toByteArray().toStdString();
 		return false;
 	}
 
@@ -37,7 +38,7 @@ bool CPlatformApiLayer::auth(const QString & login, const QString & pass){
 
 void CPlatformApiLayer::requestApi(const QString & post, QString & out){
 	m_xmlRequest->open("POST", util::toRu(m_url).data(), false);
-	QString str{ "Type=Request&WorkingDirectory=" + m_workingDir + "&" + post };
+	QString str{ "WorkingDirectory=" + m_workingDir + "&" + post };
 	m_xmlRequest->setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	m_xmlRequest->setRequestHeader("Content-length", _bstr_t(str.length()));
 	m_xmlRequest->setRequestHeader("Connection", "close");
