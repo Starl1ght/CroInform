@@ -39,18 +39,24 @@ void CAuthDialog::closeEvent(QCloseEvent * e){
 }
 
 void CAuthDialog::authResultSlot(authResult res) {
-	if (res != authResult::fail) {
+	switch (res) {
+	case authResult::fail:
+		m_loginButton->setText(util::toQstr("Неверно!"));
+		break;
+	case authResult::serverError:
+		m_loginButton->setText(util::toQstr("Сервер не отвечает"));
+		break;
+	case authResult::admin:
+	case authResult::user:
 		emit authSuccessful(); // TODO - admin & user :)
 		this->destroy();
-	} else {
-		m_loginButton->setText(QString::fromLocal8Bit("Неверно!"));
 	}
 }
 
 
 
 void CAuthDialog::buttonClicked(bool unused){
-	unused; // no warning on /W4 ^_^
+	unused; 
 	emit authSignal(m_loginLine->text(), m_passLine->text());
 }
 

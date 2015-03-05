@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translation>
+  <tr from="Error" to="Ошибка"/>
+  <tr from="Warning" to="Предупреждение"/>
+  <tr from="ERROR_UNSET_OGRN" to="Скорее всего, вы не ввели ОГРН (ERROR_UNSET_OGRN)"/>
+  <tr from="ERROR_UNSET_INN" to="Скорее всего, вы не ввели ИНН (ERROR_UNSET_INN)"/>
+  <tr from="ERROR_VALIDATION_OGRN" to="Скорее всего, вы неверно ввели ОГРН (ERROR_VALIDATION_OGRN)"/>
+  <tr from="ERROR_VALIDATION_INN" to="Скорее всего, вы неверно ввели ИНН (ERROR_VALIDATION_INN)"/>
+</translation>

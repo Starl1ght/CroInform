@@ -11,3 +11,4 @@ Lin: QtCreator + Qt 5.4<br>
 01/03/15: Client <-> Server <-> API seem to work, but need to deal with bad_alloc<br>
 03/03/15: bad_alloc fixed. Todo - fix for debug BREAK<br>
 04/03/15: Fix for break is pending, played with HTML<br>
+05/03/15: BREAK fixed (I hope), simple error parser done, overall stability increased, customer IP and domain resolver<br>

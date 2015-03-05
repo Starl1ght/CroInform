@@ -2,7 +2,7 @@
 #include <util.h>
 #include <QObject>
 #include <QtXml>
-
+#include <QMessageBox>
 
 class CAPIManager : public QObject{
 	Q_OBJECT

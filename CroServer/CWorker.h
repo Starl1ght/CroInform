@@ -17,13 +17,15 @@ public slots:
 	
 signals:
 	void checkUserLogin(QString, QString);
-
+	
 private:
 	void readSocket(QByteArray & toRead);
 	void writeSocket(const QByteArray & toWrite);
-		
-	authResult m_permissions;
-	
+	void mainLoop();
+
+	QString m_login{"Not authenticated"};
+
+	authResult m_permissions{ authResult::fail };
 	socket_ptr m_socket{ nullptr };
 	asio::error_code m_error;
 	bool m_socketOk{ true };

@@ -83,12 +83,12 @@ void CMainWindow::prepareRequest(bool unused){
 void CMainWindow::initializeXML(){
 	QFile file("ui.xml");
 	if (!file.open(QIODevice::ReadOnly)) {
-		QMessageBox::information(this, QString::fromLocal8Bit("Ошибка"), QString::fromLocal8Bit("Файл config.xml не найден"));
+		QMessageBox::information(this, QString::fromLocal8Bit("Ошибка"), util::toQstr("Файл ui.xml не найден"));
 		exit(-1);
 	}
 
 	if (!m_doc.setContent(&file)) {
-		QMessageBox::information(this, QString::fromLocal8Bit("Ошибка"), QString::fromLocal8Bit("Ошибка в config.xml"));
+		QMessageBox::information(this, QString::fromLocal8Bit("Ошибка"), util::toQstr("Ошибка в ui.xml"));
 		exit(-1);
 	}
 	file.close();

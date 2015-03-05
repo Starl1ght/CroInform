@@ -72,5 +72,6 @@ namespace util{
 enum class authResult {
 	admin,
 	user,
-	fail
+	fail,
+	serverError
 };

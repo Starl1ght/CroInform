@@ -159,6 +159,8 @@
     <ClInclude Include="ICustomWidget.h" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="connect.xml" />
+    <Xml Include="msg.xml" />
     <Xml Include="ui.xml" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

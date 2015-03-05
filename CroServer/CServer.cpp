@@ -18,7 +18,7 @@ CServer::CServer(){
 	m_sql.fetchApiCredentials(&log, &pass);
 
 	if (!m_api->auth(log, pass)) {
-		std::cout << "API cannot auth\connect" << std::endl;
+		std::cout << "API cannot auth\\connect" << std::endl;
 		exit(-3);
 	}
 
@@ -28,21 +28,20 @@ CServer::CServer(){
 	tcp::acceptor acceptor(io_service, tcp::endpoint(tcp::v4(), 3228));
 	std::cout << "Accepting connections..." << std::endl;
 
-	std::vector<CWorker> vec;
-	vec.push_back(CWorker());
-	QObject::connect(&vec.back(), &CWorker::checkUserLogin, &m_sql, &CSqlLayer::validateUserCredentials, Qt::DirectConnection);
-	QObject::connect(&m_sql, &CSqlLayer::authSignal, &vec.back(), &CWorker::infoUserLogin, Qt::DirectConnection);
+	std::vector<CWorker> workerVec;
+//	std::vector<std::thread> threadVec;
+	
+
 	while (true) {
 		tcp::socket* socket = new tcp::socket(io_service);
 		acceptor.accept(*socket);
 		std::cout << "Connected IP: " << socket->remote_endpoint().address().to_string() << std::endl;
 
-		
-		std::thread thrs([&] { 
-			vec.back().run(socket, m_api);
-			std::cout << "Disconnected: " << socket->remote_endpoint().address().to_string() << std::endl;
-		});
-		thrs.detach();
+		workerVec.push_back(CWorker());
+		QObject::connect(&workerVec.back(), &CWorker::checkUserLogin, &m_sql, &CSqlLayer::validateUserCredentials, Qt::DirectConnection);
+		QObject::connect(&m_sql, &CSqlLayer::authSignal, &workerVec.back(), &CWorker::infoUserLogin, Qt::DirectConnection);
+		std::thread thr(&CWorker::run, &workerVec.back(), socket, m_api);
+		thr.detach();
 	}
 }
 

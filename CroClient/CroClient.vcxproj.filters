@@ -128,5 +128,11 @@
     <Xml Include="ui.xml">
       <Filter>XML</Filter>
     </Xml>
+    <Xml Include="msg.xml">
+      <Filter>XML</Filter>
+    </Xml>
+    <Xml Include="connect.xml">
+      <Filter>XML</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

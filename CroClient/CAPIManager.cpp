@@ -4,7 +4,6 @@ CAPIManager::CAPIManager(){
 
 }
 
-
 void CAPIManager::postReceiver(QString post){
 	asio::error_code ec;
 	
@@ -33,13 +32,39 @@ void CAPIManager::postReceiver(QString post){
 }
 
 void CAPIManager::authSlot(QString login, QString password){
-	tcp::endpoint ep{ asio::ip::address_v4::from_string("127.0.0.1"), 3228 };
-	m_socket.reset(new tcp::socket(io));
-	m_socket->connect(ep);
-	
-	QByteArray arr;
 	QDomDocument doc;
-	QDomElement root = doc.createElement("auth");
+	QFile file("connect.xml");
+	if (!file.open(QIODevice::ReadOnly) || !doc.setContent(&file)) {
+		QMessageBox::information(nullptr, QString::fromLocal8Bit("Ошибка"), util::toQstr("Файл connect.xml не найден"));
+		exit(-13421);
+	}
+
+	QDomElement root = doc.documentElement();
+	try {
+		m_socket.reset(new tcp::socket(io));
+		if (root.attribute("mode") == "ip") {
+			auto ip = asio::ip::address_v4::from_string(root.attribute("ip").toStdString().c_str());
+			auto port = static_cast<unsigned short>(root.attribute("port").toInt());
+			tcp::endpoint ep{ ip, port };
+			m_socket->connect(ep);
+		} else if (root.attribute("mode") == "domain") {
+			tcp::resolver res(io);
+			tcp::resolver::query query(
+				root.attribute("domain").toStdString().c_str(),
+				root.attribute("port").toStdString().c_str()
+				);
+			auto ep = *res.resolve(query);
+			m_socket->connect(ep);
+		}
+	} catch (std::exception &e) {
+		e; // warning
+		emit authResultSignal(authResult::serverError); 
+		return;
+	}
+		
+	doc.clear();
+	QByteArray arr;
+	root = doc.createElement("auth");
 	root.setAttribute("login", login);
 	root.setAttribute("password", password);
 	doc.appendChild(root);

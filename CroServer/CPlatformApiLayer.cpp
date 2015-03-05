@@ -45,7 +45,11 @@ void CPlatformApiLayer::requestApi(const QString & post, QString & out){
 	m_xmlRequest->send(util::toRu(str).data());
 	
 	out = util::toQstr((char*)m_xmlRequest->responseText);
-	std::cout << util::toRu(out).toStdString();
+
+	std::cout << "-- POST --" << std::endl;
+	std::cout << util::toRu(str).toStdString() << std::endl;
+	std::cout << "-- REPLY --" << std::endl;
+	std::cout << util::toRu(out).toStdString() << std::endl;
 }
 
 void CPlatformApiLayer::queryApi(const QString & id, QString & out){
@@ -57,7 +61,9 @@ void CPlatformApiLayer::queryApi(const QString & id, QString & out){
 	m_xmlRequest->send(util::toRu(str).data());
 
 	out = util::toQstr((char*)m_xmlRequest->responseText);
-	std::cout << util::toRu(out).toStdString();
+
+	std::cout << "-- QUERY -- " << std::endl;
+	std::cout << util::toRu(out).toStdString() << std::endl;
 }
 
 
