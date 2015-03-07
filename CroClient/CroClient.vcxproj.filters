@@ -86,6 +86,9 @@
     <ClCompile Include="CParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WDate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="CMainWindow.h">

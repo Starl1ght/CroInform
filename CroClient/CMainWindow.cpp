@@ -131,7 +131,7 @@ void CMainWindow::rebuildUI(int index){
 			m_widgetVec.push_back(WidgetPtr(new CSimpleLine(this, &node)));
 		}
 		if (attrName == m_typeDate) {
-		//	m_widgetVec.push_back(new CDate(this, &node));
+			m_widgetVec.push_back(WidgetPtr(new CDate(this, &node)));
 		}
 	}
 	QResizeEvent evt(this->size(), this->size());

@@ -29,8 +29,6 @@ CServer::CServer(){
 	std::cout << "Accepting connections..." << std::endl;
 
 	std::vector<CWorker> workerVec;
-//	std::vector<std::thread> threadVec;
-	
 
 	while (true) {
 		tcp::socket* socket = new tcp::socket(io_service);

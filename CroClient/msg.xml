@@ -6,4 +6,23 @@
   <tr from="ERROR_UNSET_INN" to="Скорее всего, вы не ввели ИНН (ERROR_UNSET_INN)"/>
   <tr from="ERROR_VALIDATION_OGRN" to="Скорее всего, вы неверно ввели ОГРН (ERROR_VALIDATION_OGRN)"/>
   <tr from="ERROR_VALIDATION_INN" to="Скорее всего, вы неверно ввели ИНН (ERROR_VALIDATION_INN)"/>
-</translation>
+  <tr from="ERROR_UNDEFINED" to="Неизвестная ошибка (ERROR_UNDEFINED)"/>
+  <tr from="WARNING_SERVICE_EXTSOURCE_NOT_AVAILABLE" to="Сервис 'Внешние источники' не доступен (WARNING_SERVICE_EXTSOURCE_NOT_AVAILABLE)"/>
+
+  <tr from="ResponseData" to="Ответ с сервера"/>
+
+  <tr from="StatusDtl" to="Статус обработки запроса подсистемами"/>
+  <tr from="StatusRequest" to="Статус обработки запроса"/>
+  <tr from="_found" to="Найдено"/>
+  <tr from="_searching" to="Обрабатывается"/>
+  <tr from="_notfound" to="Не найдено"/>
+
+  <tr from="benef" to="Бенефициар"/>
+  <tr from="svi" to="Сервис взаимного информирования"/>
+  <tr from="aff" to="Аффилированость"/>
+  <tr from="egrul" to="ЕГРЮЛ"/>
+  <tr from="balance" to="Баланс"/>
+  <tr from="ext_source" to="Внешние источники"/>
+
+
+  </translation>

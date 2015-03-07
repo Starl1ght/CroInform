@@ -30,8 +30,58 @@ void CParser::parseAnswer(QString answer){
 	QDomDocument doc;
 	doc.setContent(answer);
 
+	// TODO - remove
+	QFile outFile("c:\\bob4.xml");
+	outFile.open(QIODevice::WriteOnly | QIODevice::Text);
+	QTextStream stream(&outFile);
+	stream << doc.toString();
+	// !REMOVE
+
+	auto root = doc.documentElement();
+	QString html{ "<html>" };
+
+	html = html + "<h1>" + translate("StatusRequest") + " -> ";
+	if (root.firstChildElement("StatusRequest").text() == "1") {
+		html += translate("_found");
+	}
+	if (root.firstChildElement("StatusRequest").text() == "3") {
+		html += translate("_searching");
+	}
+	if (root.firstChildElement("StatusRequest").text() == "0" || root.firstChildElement("StatusRequest").text() == "") {
+		html += translate("_notfound");
+	}
+	html += "</h1><br>";
+
+
+
+	html = html + "<h1>"+ translate("StatusDtl") + "</h1><br>";
+	for (auto elem = root.firstChildElement("StatusDtl").firstChildElement(); !elem.isNull(); elem = elem.nextSiblingElement()) {
+		html = html + translate(elem.tagName()) + " -> ";
+		if (elem.text() == "1") {
+			html += translate("_found");
+		}
+		if (elem.text() == "3") {
+			html += translate("_searching");
+		}
+		if (elem.text() == "0" || elem.text() == "") {
+			html += translate("_notfound");
+		}
+		html += "<br>";
+	}
+
+	html += "<h1>" + translate("ResponseData") + "</h1><br>";
+	for (auto elem = root.firstChildElement("ResponseData").firstChildElement(); !elem.isNull(); elem = elem.nextSiblingElement()) {
+		html = html + CParser::translate(elem.tagName()) + " -> " + elem.text() + "<br>";
+	}
 	
-	emit parsed(doc.toString());
+	if (doc.firstChildElement("Documents").tagName() == "Documents") {
+		if (doc.firstChildElement("Documents").firstChildElement("AnswerHtml").tagName() == "AnswerHtml") {
+			html += "<h1>" + translate("AnswerHTML") + "</h1><br>";
+			html += doc.firstChildElement("Documents").firstChildElement("AnswerHTML").text();
+		}
+	}
+
+	emit parsed(html);
 	emit unblockUI();
 }
 
