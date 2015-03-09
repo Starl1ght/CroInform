@@ -9,7 +9,7 @@ public:
 
 	bool connect();
 	void fetchApiCredentials(QString* login, QString* password);
-
+	QString getURL();
 public slots:
 	void validateUserCredentials(QString, QString);
 

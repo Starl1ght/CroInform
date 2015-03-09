@@ -2,22 +2,22 @@
 #include <iostream>
 
 void main(int argc, char *argv[]){
-
 	QCoreApplication app(argc, argv);
 	CServer server;
 }
 
 CServer::CServer(){
-	m_api = new CPlatformApiLayer();
+	
 	if (!m_sql.connect()) {
+		std::cout << "DB cannot auth\\connect" << std::endl;
 		exit(-2);
 	}
 	std::cout << "DB connect OK" << std::endl;
 	
-	QString log, pass;
-	m_sql.fetchApiCredentials(&log, &pass);
-
-	if (!m_api->auth(log, pass)) {
+	QString login, pass;
+	m_sql.fetchApiCredentials(&login, &pass);
+	m_api = new CPlatformApiLayer(login, pass, m_sql.getURL());
+	if (!m_api->auth()) {
 		std::cout << "API cannot auth\\connect" << std::endl;
 		exit(-3);
 	}

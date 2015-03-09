@@ -99,3 +99,7 @@ void CAPIManager::queryRequest(QString id) {
 
 	emit forwardAnswerToParse(util::toQstr(arr));
 }
+
+void CAPIManager::querySlot(QString id){
+	queryRequest(id);
+}

@@ -74,15 +74,28 @@ void CParser::parseAnswer(QString answer){
 		html = html + CParser::translate(elem.tagName()) + " -> " + elem.text() + "<br>";
 	}
 	
-	if (doc.firstChildElement("Documents").tagName() == "Documents") {
-		if (doc.firstChildElement("Documents").firstChildElement("AnswerHtml").tagName() == "AnswerHtml") {
-			html += "<h1>" + translate("AnswerHTML") + "</h1><br>";
-			html += doc.firstChildElement("Documents").firstChildElement("AnswerHTML").text();
+	if (root.firstChildElement("Documents").tagName() == "Documents") {
+		if (root.firstChildElement("Documents").firstChildElement("AnswerHtml").tagName() == "AnswerHtml") {
+			html += "<h1>" + translate("AnswerHtml") + "</h1><br>";
+			html += root.firstChildElement("Documents").firstChildElement("AnswerHtml").toCDATASection().nodeValue();
+			html += root.firstChildElement("Documents").firstChildElement("AnswerHtml").text();
+
+			
+				//.firstChildEment("AnswerHTML").toCDATASection().nodeValue();
 		}
 	}
 
 	emit parsed(html);
-	emit unblockUI();
+
+	if (root.firstChildElement("StatusRequest").text() == "3") { // searching
+		for (int i = 0; i < 40; ++i) {
+			Sleep(100);
+			QApplication::processEvents();
+		}
+		emit queryAgain(root.firstChildElement("RequestNumber").text());
+	} else {
+		emit unblockUI();
+	}
 }
 
 void CParser::parseError(QString error){

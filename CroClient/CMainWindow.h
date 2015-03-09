@@ -4,6 +4,7 @@
 #pragma warning (disable:4127) 
 #include <QtWidgets>
 #include <QtXML>
+#include <QtWebKitWidgets\QWebView>
 #pragma warning (pop)
 #include "CAPIManager.h"
 #include "CAuthDialog.h"
@@ -48,7 +49,7 @@ private:
 	
 	std::unique_ptr<QPushButton> m_submitButton;
 	std::unique_ptr<QComboBox> m_choiceComboBox;
-	std::unique_ptr<QTextEdit> m_outputTextEdit;
+	std::unique_ptr<QWebView> m_outputTextEdit;
 	
 	QDomDocument m_doc;
 	WidgetVec m_widgetVec;

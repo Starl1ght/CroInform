@@ -14,6 +14,13 @@ bool CSqlLayer::connect(){
 	return db.open();
 }
 
+QString CSqlLayer::getURL(){
+	QSqlQuery query;
+	query.exec("SELECT `options`.`value` FROM `options` WHERE `options`.`key` = \"cro_url\"");
+	query.next();
+	return query.value(0).toString();
+}
+
 void CSqlLayer::fetchApiCredentials(QString* login, QString* password){
 	QSqlQuery query;
 	
@@ -24,6 +31,8 @@ void CSqlLayer::fetchApiCredentials(QString* login, QString* password){
 	query.exec("SELECT `options`.`value` FROM `options` WHERE `options`.`key` = \"cro_password\"");
 	query.next();
 	*password = query.value(0).toString();
+
+	//std::cout << "Fetched credentials " << login->toStdString() << " " << password->toStdString() << std::endl;
 }
 
 void CSqlLayer::validateUserCredentials(QString login, QString password){

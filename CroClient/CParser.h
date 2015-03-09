@@ -1,6 +1,7 @@
 #pragma once
 #include <QObject>
 #include <QtXML>
+#include <QApplication>
 #include <QMessageBox>
 #include <QMap>
 #include "util.h"
@@ -15,6 +16,7 @@ public slots:
 signals:
 	void parsed(QString);
 	void unblockUI();
+	void queryAgain(QString);
 private:
 	const QString & translate(const QString & toTr);
 	QMap<QString, QString> m_map;

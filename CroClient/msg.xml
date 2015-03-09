@@ -8,7 +8,8 @@
   <tr from="ERROR_VALIDATION_INN" to="Скорее всего, вы неверно ввели ИНН (ERROR_VALIDATION_INN)"/>
   <tr from="ERROR_UNDEFINED" to="Неизвестная ошибка (ERROR_UNDEFINED)"/>
   <tr from="WARNING_SERVICE_EXTSOURCE_NOT_AVAILABLE" to="Сервис 'Внешние источники' не доступен (WARNING_SERVICE_EXTSOURCE_NOT_AVAILABLE)"/>
-
+  <tr from="ERROR_NOT_SELECTED_SERVICE" to="Скорее всего, вы забыли задать хоть 1 сервис поиска (ERROR_NOT_SELECTED_SERVICE)"/>
+    
   <tr from="ResponseData" to="Ответ с сервера"/>
 
   <tr from="StatusDtl" to="Статус обработки запроса подсистемами"/>
@@ -25,4 +26,4 @@
   <tr from="ext_source" to="Внешние источники"/>
 
 
-  </translation>
+</translation>

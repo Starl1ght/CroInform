@@ -17,6 +17,7 @@ void main(int argc, char** argv){
 	// Interaction with parser
 	QObject::connect(&parser, &CParser::unblockUI, &window, &CMainWindow::unblockUI);
 	QObject::connect(&parser, &CParser::parsed, &window, &CMainWindow::getFormattedData);
+	QObject::connect(&parser, &CParser::queryAgain, &api, &CAPIManager::querySlot);
 	// Parser <-> API
 	QObject::connect(&api, &CAPIManager::forwardAnswerToParse, &parser, &CParser::parseAnswer);
 	QObject::connect(&api, &CAPIManager::forwardErrorToParse, &parser, &CParser::parseError);
@@ -31,15 +32,14 @@ CMainWindow::CMainWindow(){
 	QObject::connect(m_submitButton.get(), &QPushButton::clicked, this, &CMainWindow::prepareRequest);
 	this->resize(m_defWidth, m_defHeight);
 	m_submitButton->setText(QString::fromLocal8Bit("Запрос"));
+	m_outputTextEdit->setHtml(util::toQstr("<h1>Привет посоны</h1>"));
 }
 void CMainWindow::unblockUI(){
 	m_choiceComboBox->setEnabled(true);
 	m_submitButton->setEnabled(true);
 }
 void CMainWindow::getFormattedData(QString text){
-	m_outputTextEdit->clear();
-	m_outputTextEdit->insertHtml(text);
-	//m_outputTextEdit->setText(text);
+	m_outputTextEdit->setHtml(text);
 }
 void CMainWindow::showWindow(){
 	this->show();
@@ -95,9 +95,8 @@ void CMainWindow::initializeXML(){
 }
 void CMainWindow::initializeUI(){
 	m_choiceComboBox.reset(new QComboBox(this));
-	m_outputTextEdit.reset(new QTextEdit(this));
+	m_outputTextEdit.reset(new QWebView(this));
 	m_submitButton.reset(new QPushButton(this));
-	m_outputTextEdit->setReadOnly(true);
 	auto node = m_doc.documentElement().firstChild();
 	while (!node.isNull()) {
 		m_choiceComboBox->addItem(node.toElement().attribute("caption"));

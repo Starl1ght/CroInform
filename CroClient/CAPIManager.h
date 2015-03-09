@@ -12,6 +12,7 @@ public:
 public slots:
 	void postReceiver(QString);
 	void authSlot(QString, QString);
+	void querySlot(QString);
 signals:
 	void gotData(QString);
 	void authResultSignal(authResult);
@@ -19,7 +20,7 @@ signals:
 	void forwardErrorToParse(QString);
 private:
 	void CAPIManager::queryRequest(QString id);
-
+	
 	asio::io_service io;
 	socket_ptr m_socket;
 };

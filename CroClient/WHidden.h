@@ -1,6 +1,5 @@
 #pragma once
 #include "ICustomWidget.h"
-
 class CHidden : public ICustomWidget {
 	Q_OBJECT
 public:

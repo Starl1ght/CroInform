@@ -13,3 +13,4 @@ Lin: QtCreator + Qt 5.4<br>
 04/03/15: Fix for break is pending, played with HTML<br>
 05/03/15: BREAK fixed (I hope), simple error parser done, overall stability increased, customer IP and domain resolver<br>
 07/03/15: Answer parser is semi-done (Document should be fixed). Also, query in case of StatusRequest == 3 should be done<br>
+08/03/15: Switched to Webview, parser fixed<br>

@@ -5,7 +5,6 @@
 
 class CWorker : public QObject{
 	Q_OBJECT
-
 public:
 	CWorker(){};
 	~CWorker(){};

@@ -7,11 +7,11 @@
 
 class CPlatformApiLayer {
 public:
-	CPlatformApiLayer();
+	CPlatformApiLayer(const QString & login, const QString & pass, const QString & url);
 	~CPlatformApiLayer();
 	CPlatformApiLayer& operator=(const CPlatformApiLayer&) = delete;
 	CPlatformApiLayer(const CPlatformApiLayer&) = delete;
-	bool auth(const QString & login, const QString & pass);
+	bool auth();
 
 	void requestApi(const QString & post, QString & out);
 	void queryApi(const QString & id, QString & out);
@@ -19,7 +19,9 @@ public:
 
 private:
 	QString m_workingDir{ "" };
-	const QString m_url{ "https://ssl.croinform.ru:450/api.test" };
+	QString m_url{ "" };
+	QString m_login{ "" };
+	QString m_pass{ "" };
 	MSXML2::IXMLHTTPRequestPtr m_xmlRequest;
 
 	std::mutex m_mutex;
