@@ -1,10 +1,11 @@
 #pragma once
 #include <util.h>
 #include <mutex>
-// qt don't like this one :D
 #ifdef _WIN32
 #import <msxml6.dll>
-
+#else
+//#include <curl/curl.h>
+#endif
 class CPlatformApiLayer {
 public:
 	CPlatformApiLayer(const QString & login, const QString & pass, const QString & url);
@@ -16,22 +17,20 @@ public:
 	void requestApi(const QString & post, QString & out);
 	void queryApi(const QString & id, QString & out);
 
+    QString lowlevelApiCall(const QString& request);
 
 private:
 	QString m_workingDir{ "" };
 	QString m_url{ "" };
 	QString m_login{ "" };
 	QString m_pass{ "" };
+
+#ifdef _WIN32
 	MSXML2::IXMLHTTPRequestPtr m_xmlRequest;
+#else
+//   CURL *m_curl;
+#endif
+
 
 	std::mutex m_mutex;
 };
-
-#endif
-
-
-
-#ifdef __linux__ 
-#define CPlatformApiLayer CPlatformApiLayer_L
-#endif
-

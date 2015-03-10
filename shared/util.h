@@ -12,10 +12,18 @@ namespace util{
 		QTextCodec *codec = QTextCodec::codecForName("cp1251");
 		return codec->fromUnicode(str);
 	}
+#ifdef _WIN32
 	inline QString toQstr(const QByteArray& arr){
 		QTextCodec *codec = QTextCodec::codecForName("cp1251");
 		return codec->toUnicode(arr);
 	}
+#else
+        inline QString toQstr(const QByteArray& arr){
+		return QString(arr);
+        }	
+#endif
+
+
 	inline QString toQstr(char* str){
 		QByteArray arr(str);
 		return util::toQstr(arr);

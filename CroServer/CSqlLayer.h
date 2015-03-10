@@ -1,5 +1,5 @@
 #include <util.h>
-#include <QtSQL>
+#include <QtSql>
 
 class CSqlLayer : public QObject{
 	Q_OBJECT

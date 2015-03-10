@@ -1,9 +1,10 @@
 #include "CServer.h"
 #include <iostream>
 
-void main(int argc, char *argv[]){
+int main(int argc, char *argv[]){
 	QCoreApplication app(argc, argv);
 	CServer server;
+    return 0; // fuck GCC
 }
 
 CServer::CServer(){

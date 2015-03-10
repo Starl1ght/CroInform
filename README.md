@@ -14,3 +14,4 @@ Lin: QtCreator + Qt 5.4<br>
 05/03/15: BREAK fixed (I hope), simple error parser done, overall stability increased, customer IP and domain resolver<br>
 07/03/15: Answer parser is semi-done (Document should be fixed). Also, query in case of StatusRequest == 3 should be done<br>
 08/03/15: Switched to Webview, parser fixed<br>
+10/03/15: Linux version of server is finally working through popen().<br>
