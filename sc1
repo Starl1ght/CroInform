@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-02-15T15:28:53.250Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 OPR/74.0.3911.107" etag="kYV_sweZ72JbitMNH4Ra" version="14.3.2" type="github">
+<mxfile host="app.diagrams.net" modified="2021-02-15T15:34:15.185Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 OPR/74.0.3911.107" etag="KfCsEV4tURrOgKd9P9vi" version="14.3.2" type="github">
   <diagram id="XVzIbFjtxAHvt7Jw_dAP" name="Page-1">
     <mxGraphModel dx="1406" dy="786" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -28,8 +28,8 @@
             <mxPoint x="480" y="320" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="uuU_Bc41kNluYUvIlcH0-17" value="Game seat, CTMT" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="120" y="30" width="40" height="20" as="geometry" />
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-17" value="&lt;font style=&quot;font-size: 18px&quot;&gt;Game seat, CTMT&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="52.5" y="30" width="175" height="20" as="geometry" />
         </mxCell>
         <mxCell id="uuU_Bc41kNluYUvIlcH0-18" value="Receive an yes\no for upload request" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="80" y="530" width="120" height="60" as="geometry" />
@@ -149,6 +149,9 @@
           <mxGeometry x="-0.1954" y="-1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-57" value="&lt;font style=&quot;font-size: 18px&quot;&gt;AWS Lambda&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="467.5" y="30" width="175" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
