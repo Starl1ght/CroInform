@@ -1,1 +1,156 @@
-<mxfile host="app.diagrams.net" modified="2021-02-15T13:21:43.336Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 OPR/74.0.3911.107" version="14.3.2" etag="sEK7IQ_omIUl24J9EEUi" type="github"><diagram id="XVzIbFjtxAHvt7Jw_dAP">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-02-15T15:28:53.250Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36 OPR/74.0.3911.107" etag="kYV_sweZ72JbitMNH4Ra" version="14.3.2" type="github">
+  <diagram id="XVzIbFjtxAHvt7Jw_dAP" name="Page-1">
+    <mxGraphModel dx="1406" dy="786" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-3" value="End of GFN session" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="300" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-10" value="Send SC stats to AWS" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="410" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-12" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="uuU_Bc41kNluYUvIlcH0-3" target="uuU_Bc41kNluYUvIlcH0-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="430" y="530" as="sourcePoint" />
+            <mxPoint x="480" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-13" value="Beginning of GFN session" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="90" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-14" value="Send &quot;Session startup&quot;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="190" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-16" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="uuU_Bc41kNluYUvIlcH0-13" target="uuU_Bc41kNluYUvIlcH0-14">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="430" y="370" as="sourcePoint" />
+            <mxPoint x="480" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-17" value="Game seat, CTMT" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="120" y="30" width="40" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-18" value="Receive an yes\no for upload request" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="530" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-19" value="Upload shader cache, if &quot;yes&quot; is received" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="640" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-20" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="uuU_Bc41kNluYUvIlcH0-18" target="uuU_Bc41kNluYUvIlcH0-19">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="500" as="sourcePoint" />
+            <mxPoint x="450" y="450" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-21" value="" style="endArrow=none;dashed=1;html=1;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="730" as="sourcePoint" />
+            <mxPoint x="280" y="10" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-22" value="Lambda SC&lt;br&gt;upload logic" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="460" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-24" value="Lambda BSOD&lt;br&gt;detector logic" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="240" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-54" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.875;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="uuU_Bc41kNluYUvIlcH0-25" target="uuU_Bc41kNluYUvIlcH0-51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-25" value="Lambda new&lt;br&gt;BDS build logic" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="290" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-29" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.07;entryY=0.4;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="uuU_Bc41kNluYUvIlcH0-14" target="uuU_Bc41kNluYUvIlcH0-24">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="370" as="sourcePoint" />
+            <mxPoint x="450" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-30" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.13;entryY=0.77;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="uuU_Bc41kNluYUvIlcH0-10" target="uuU_Bc41kNluYUvIlcH0-24">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="370" as="sourcePoint" />
+            <mxPoint x="450" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-31" value="" style="endArrow=classic;html=1;entryX=0.133;entryY=0.275;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="uuU_Bc41kNluYUvIlcH0-22">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="200" y="440" as="sourcePoint" />
+            <mxPoint x="400" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-32" value="" style="endArrow=classic;html=1;exitX=0.13;exitY=0.77;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="uuU_Bc41kNluYUvIlcH0-22" target="uuU_Bc41kNluYUvIlcH0-18">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="370" as="sourcePoint" />
+            <mxPoint x="400" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-33" value="Got more startup&lt;br&gt;&amp;nbsp;events, than SC stats&lt;br&gt;&amp;nbsp;(end events)" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="90" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-34" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0.113;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="uuU_Bc41kNluYUvIlcH0-24" target="uuU_Bc41kNluYUvIlcH0-33">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="370" as="sourcePoint" />
+            <mxPoint x="400" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-35" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="uuU_Bc41kNluYUvIlcH0-33">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="570" y="120" as="sourcePoint" />
+            <mxPoint x="590" y="135" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-36" value="Send alert" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="590" y="105" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-37" value="Shader cache&lt;br&gt;&amp;nbsp;hit rate is good" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="610" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-38" value="" style="endArrow=classic;html=1;entryX=0.31;entryY=0.8;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="1" source="uuU_Bc41kNluYUvIlcH0-37" target="uuU_Bc41kNluYUvIlcH0-22">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="610" as="sourcePoint" />
+            <mxPoint x="460" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-41" value="Is BDS build &lt;br&gt;of SC latest?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="640" y="540" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-42" value="" style="endArrow=classic;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.875;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="uuU_Bc41kNluYUvIlcH0-41" target="uuU_Bc41kNluYUvIlcH0-22">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="550" as="sourcePoint" />
+            <mxPoint x="400" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-47" value="Anything else?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="590" width="110" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-48" value="" style="endArrow=classic;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=0.7;entryY=0.9;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="uuU_Bc41kNluYUvIlcH0-47" target="uuU_Bc41kNluYUvIlcH0-22">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="560" as="sourcePoint" />
+            <mxPoint x="400" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-49" value="Notify BDS logic on each new cache allowed" style="endArrow=classic;html=1;exitX=0.783;exitY=0.15;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.192;entryY=0.825;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="uuU_Bc41kNluYUvIlcH0-22" target="uuU_Bc41kNluYUvIlcH0-25">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="490" y="480" as="sourcePoint" />
+            <mxPoint x="540" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-51" value="Create new BDS build under conditions" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="710" y="300" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-55" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="uuU_Bc41kNluYUvIlcH0-51" target="uuU_Bc41kNluYUvIlcH0-41">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="350" as="sourcePoint" />
+            <mxPoint x="692.5" y="527.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uuU_Bc41kNluYUvIlcH0-56" value="Stop collecting caches on current BDS build" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="uuU_Bc41kNluYUvIlcH0-55">
+          <mxGeometry x="-0.1954" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
